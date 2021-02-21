@@ -66,6 +66,9 @@ export default {
     host: '0.0.0.0',
     port: 8081,
     historyApiFallback: true,
+    disableHostCheck: true,
+    inline: true,
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
