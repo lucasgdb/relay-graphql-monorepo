@@ -18,7 +18,7 @@ const fetchQuery = async (operation, variables) => {
   try {
     const body = JSON.stringify({
       name: operation.name,
-      query: operation.text,
+      queryId: operation.id,
       variables,
     });
 

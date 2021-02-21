@@ -6,7 +6,7 @@
   "license": "ISC",
   "scripts": {
     "start-dev": "yarn relay && env-cmd -f .env.development webpack serve",
-    "relay": "relay-compiler",
+    "relay": "relay-compiler --persist-output ../server/src/assets/queryMaps/webQueryMap.json",
     "update": "yarn relay",
     "prebuild": "yarn --frozen-lockfile && rm -rf build && yarn relay",
     "build": "NODE_OPTIONS=--max_old_space_size=8192 env-cmd -f .env.production webpack --mode=production"
