@@ -25,4 +25,4 @@
 
 ### Stopping
 
-- `yarn stop`: Stop project (`docker-compose down`)
+- `yarn stop`: Stops the project (`docker-compose down`)
