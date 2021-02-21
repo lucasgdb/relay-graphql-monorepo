@@ -46,9 +46,9 @@ const extensions = request => ({ document }) => {
     ({ name }) =>
       name &&
       console.log(
-        `[${moment().format('HH:mm:ss DD/MM/YYYY')}] - ${
-          name.value
-        } = ${Date.now() - request.start}`,
+        `[${moment().format('HH:mm:ss DD/MM/YYYY')}] - ${name.value} = ${
+          Date.now() - request.start
+        }`,
       ),
   );
 
