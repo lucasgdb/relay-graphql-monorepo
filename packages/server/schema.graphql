@@ -1,0 +1,70 @@
+type Query {
+  auth: Auth
+
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+  viewer: User
+}
+
+type Auth {
+  isLogged: Boolean
+  user: User
+}
+
+type User implements Node {
+  # The ID of an object
+  id: ID!
+  name: String
+  lastname: String
+  fullname: String
+  email: String
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+type Mutation {
+  login(input: LoginMutationInput!): LoginMutationPayload
+  logout(input: LogoutMutationInput!): LogoutMutationPayload
+  createUser(input: CreateUserMutationInput!): CreateUserMutationPayload
+}
+
+type LoginMutationPayload {
+  jwtToken: String
+  user: User
+  clientMutationId: String
+}
+
+input LoginMutationInput {
+  email: String!
+  password: String!
+  clientMutationId: String
+}
+
+type LogoutMutationPayload {
+  clientMutationId: String
+}
+
+input LogoutMutationInput {
+  clientMutationId: String
+}
+
+type CreateUserMutationPayload {
+  jwtToken: String
+  user: User
+  clientMutationId: String
+}
+
+input CreateUserMutationInput {
+  name: String!
+  lastname: String
+  email: String!
+  password: String!
+  clientMutationId: String
+}

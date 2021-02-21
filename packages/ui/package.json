@@ -1,0 +1,17 @@
+{
+  "name": "@example/ui",
+  "private": true,
+  "version": "1.0.0",
+  "license": "ISC",
+  "main": "src/index.js",
+  "dependencies": {
+    "@example/connectors": "*",
+    "@example/entities": "*",
+    "@example/shared": "*",
+    "notistack": "^1.0.3",
+    "styled-components": "^5.2.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
