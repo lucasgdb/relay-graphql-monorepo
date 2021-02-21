@@ -17,10 +17,7 @@ export const getUserOrThrowError = async context => {
     throw new ApplicationError(errorConfig.user.unauthenticated.code);
   }
 
-  const user = await dbConnect.getOne({
-    table: 'user',
-    params: { id: context.user.id },
-  });
+  const user = await userEntity.getUserById(context.user.id);
 
   return user;
 };
