@@ -2,14 +2,14 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+import { dbConnect } from '@example/connectors';
+import { graphqlHTTP } from 'express-graphql';
+import { printSchema } from 'graphql/utilities';
 import fs from 'fs';
 import path from 'path';
 import cors from 'cors';
 import express from 'express';
 import expressPlayground from 'graphql-playground-middleware-express';
-import { graphqlHTTP } from 'express-graphql';
-import { printSchema } from 'graphql/utilities';
-import { dbConnect } from '@example/connectors';
 import moment from 'moment-timezone';
 import compression from 'compression';
 
@@ -34,26 +34,26 @@ const corsConfig = {
   credentials: true,
 };
 
+const extensions = request => ({ document }) => {
+  document.definitions.forEach(({ name }) => {
+    if (name) {
+      console.info(
+        `[${moment().format('HH:mm:ss DD/MM/YYYY')}] - ${
+          name.value
+        } = ${Date.now() - request.start}`,
+      );
+    }
+  });
+
+  return {};
+};
+
 const printError = error =>
   console.error(
     `ERROR[${moment().format('HH:mm:ss DD/MM/YYYY')}][${
       error.path ? error.path.join(' -> ') : ''
     }] ===> ${error.message}`,
   );
-
-const extensions = request => ({ document }) => {
-  document.definitions.forEach(
-    ({ name }) =>
-      name &&
-      console.log(
-        `[${moment().format('HH:mm:ss DD/MM/YYYY')}] - ${name.value} = ${
-          Date.now() - request.start
-        }`,
-      ),
-  );
-
-  return {};
-};
 
 graphQLServer.use(compression());
 
@@ -67,13 +67,14 @@ graphQLServer.get('/hc', async (_req, res) => {
 
 graphQLServer.use((req, _res, next) => {
   req.start = Date.now();
-  next();
+  return next();
 });
 
 graphQLServer.use(cors(corsConfig));
 graphQLServer.use(express.json({ limit: '10mb' }));
 graphQLServer.use(express.urlencoded({ extended: true }));
 graphQLServer.use(jwtAuth.initialize());
+
 apiServer(graphQLServer);
 
 graphQLServer.all('/graphql*', jwtAuth.authenticate());
