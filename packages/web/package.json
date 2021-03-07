@@ -5,11 +5,11 @@
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
-    "start-dev": "yarn relay && env-cmd -f .env.development webpack serve",
+    "start-dev": "yarn relay && env-cmd -f .env.development webpack serve --port 8081",
     "relay": "relay-compiler",
     "update": "yarn relay",
     "prebuild": "yarn --frozen-lockfile && rm -rf build && yarn relay",
-    "build": "NODE_OPTIONS=--max_old_space_size=8192 env-cmd -f .env.production webpack --mode=production"
+    "build": "NODE_OPTIONS=--max_old_space_size=8192 env-cmd -f .env.production webpack"
   },
   "dependencies": {
     "@date-io/moment": "^2.10.8",

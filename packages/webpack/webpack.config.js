@@ -24,7 +24,7 @@ const getEnvFromCurrentEnvironment = () => {
 
 export default {
   mode: isDevelopment ? 'development' : 'production',
-  entry: ['./src/index.js'],
+  entry: './src/index.js',
   context: path.join(cwd, '.'),
   devtool: 'source-map',
   resolve: {
@@ -33,7 +33,7 @@ export default {
   },
   output: {
     path: path.join(cwd, 'build'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [
@@ -62,9 +62,8 @@ export default {
   },
   devServer: {
     contentBase: path.join(cwd, 'public'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     host: '0.0.0.0',
-    port: 8081,
     historyApiFallback: true,
     disableHostCheck: true,
     inline: true,
