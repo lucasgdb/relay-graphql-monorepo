@@ -23,11 +23,10 @@ const AuthModel = dbConnect => {
           .orderBy('created_at', 'desc')
           .limit(MAXIMUM_NUMBER_OF_VALID_LOGINS);
 
+        const validLoginsId = validLogins.map(validLogin => validLogin.id);
+
         await trx('login')
-          .whereNotIn(
-            'id',
-            validLogins.map(validLogin => validLogin.id),
-          )
+          .whereNotIn('id', validLoginsId)
           .andWhere('user_id', userId)
           .andWhere('active', true)
           .update({ active: false, updated_at: moment().format() });

@@ -8,7 +8,7 @@ const AuthModel = dbConnect => ({
       .where({ name })
       .queryContext({ limit: 1 });
 
-    return get(config, 'value') || 2;
+    return get(config, 'value', 2);
   },
 });
 
