@@ -4,7 +4,7 @@ services:
   web:
     image: node:14.15.5
     container_name: example-web
-    working_dir: /graphql-relay-monorepo/packages/web
+    working_dir: /relay-graphql-monorepo/packages/web
     entrypoint: yarn start-dev
     ports:
       - '8081:8081'
