@@ -40,7 +40,12 @@
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
-    "@example/babel": "*",
+    "@babel/cli": "^7.12.16",
+    "@babel/core": "^7.12.16",
+    "@babel/plugin-proposal-function-bind": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.12.15",
+    "@babel/preset-env": "^7.12.16",
+    "babel-watch": "^7.4.1",
     "env-cmd": "^10.1.0"
   }
 }
