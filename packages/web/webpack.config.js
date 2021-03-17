@@ -31,40 +31,13 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].bundle.js',
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.(js)$/,
-        use: {
-          loader: 'babel-loader?cacheDirectory',
-          options: {
-            presets: [
-              [
-                '@babel/preset-react',
-                {
-                  runtime: 'automatic',
-                },
-              ],
-              '@babel/preset-env',
-            ],
-            plugins: [
-              [
-                'relay',
-                {
-                  schema: '../server/schema.graphql',
-                },
-              ],
-              '@babel/plugin-transform-runtime',
-              '@babel/plugin-proposal-object-rest-spread',
-              '@babel/plugin-proposal-class-properties',
-              '@babel/plugin-proposal-export-default-from',
-              '@babel/plugin-proposal-export-namespace-from',
-              'module-resolver',
-            ],
-          },
-        },
+        use: 'babel-loader?cacheDirectory',
         exclude: /node_modules/,
       },
       {
@@ -87,7 +60,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
-    filename: '[name].bundle.js',
+    filename: 'bundle.js',
     host: '0.0.0.0',
     historyApiFallback: true,
     disableHostCheck: true,
