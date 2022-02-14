@@ -53,7 +53,7 @@ const auth = () => {
 
         const user = await userEntity.getUserById(login.user_id!);
 
-        req.login = login;
+        req.loginId = login.id;
         req.user = user;
 
         return next();

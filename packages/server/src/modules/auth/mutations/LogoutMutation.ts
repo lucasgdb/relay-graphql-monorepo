@@ -10,13 +10,13 @@ type logoutProps = {
 };
 
 const logout = async ({ clientMutationId }: logoutProps, context: IContext) => {
-  if (!context.login?.id) {
+  if (!context.loginId) {
     throw new Error(errorConfig.user.unauthenticated.code);
   }
 
   const authEntity = AuthModel(exampleConnector);
 
-  await authEntity.logout(context.login.id);
+  await authEntity.logout(context.loginId);
 
   return { clientMutationId };
 };

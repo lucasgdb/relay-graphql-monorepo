@@ -3,7 +3,7 @@ import type IUser from '~/models/IUser';
 
 type IContext = {
   user: IUser | undefined;
-  login: ILogin | undefined;
+  loginId: ILogin['id'];
 };
 
 export default IContext;

@@ -1,10 +1,10 @@
 declare namespace Express {
-  type UserType = import('../src/models/User').default;
-  type LoginType = import('../src/models/Login').default;
+  type IUser = import('../src/models/IUser').default;
+  type ILogin = import('../src/models/ILogin').default;
 
   export interface Request {
-    user?: UserType;
-    login?: LoginType;
+    user?: IUser;
+    loginId?: ILogin['id'];
     start?: number;
   }
 }
