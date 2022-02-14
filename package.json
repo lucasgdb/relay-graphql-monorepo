@@ -8,28 +8,40 @@
     "delete:node_modules": "find . -name \"node_modules\" -exec rm -rf '{}' +",
     "delete:build": "find . -name \"build\" -exec rm -rf '{}' +",
     "clear": "yarn delete:node_modules && yarn delete:build",
-    "install-dependencies": "sh scripts/install-dependencies.sh",
+    "typesync": "npx typesync --ignoredeps=dev",
     "start": "docker-compose up -d",
     "stop": "docker-compose down",
-    "test": "jest"
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.4",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5"
   },
   "workspaces": {
     "packages": [
       "packages/*"
     ]
-  },
-  "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.18.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-relay": "^1.8.1",
-    "jest": "^26.6.3"
   }
 }

@@ -1,36 +1,44 @@
 type Query {
-  auth: Auth
+  auth: Auth!
 
-  # Fetches an object given its ID
+  """Fetches an object given its ID"""
   node(
-    # The ID of an object
+    """The ID of an object"""
     id: ID!
   ): Node
-  viewer: User
+
+  """Fetches objects given their IDs"""
+  nodes(
+    """The IDs of objects"""
+    ids: [ID!]!
+  ): [Node]!
+  viewer: User!
 }
 
 type Auth {
-  isLogged: Boolean
+  isLogged: Boolean!
   user: User
 }
 
 type User implements Node {
-  # The ID of an object
+  """The ID of an object"""
   id: ID!
-  name: String
-  lastname: String
-  fullname: String
-  email: String
+  email: String!
+  name: String!
+  lastname: String!
+  fullname: String!
 }
 
-# An object with an ID
+"""An object with an ID"""
 interface Node {
-  # The id of the object.
+  """The id of the object."""
   id: ID!
 }
 
 type Mutation {
   login(input: LoginMutationInput!): LoginMutationPayload
+
+  """The logOut mutation can be used to log out an existing user."""
   logout(input: LogoutMutationInput!): LogoutMutationPayload
   createUser(input: CreateUserMutationInput!): CreateUserMutationPayload
 }
@@ -63,7 +71,7 @@ type CreateUserMutationPayload {
 
 input CreateUserMutationInput {
   name: String!
-  lastname: String
+  lastname: String!
   email: String!
   password: String!
   clientMutationId: String

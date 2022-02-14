@@ -1,67 +1,87 @@
 module.exports = {
-  parser: 'babel-eslint',
+  root: true,
+  parser: '@typescript-eslint/parser',
   env: {
     browser: true,
-    es2020: true,
     node: true,
     jest: true,
+    es6: true,
   },
+  plugins: ['react', 'prettier'],
   extends: [
-    'airbnb',
     'prettier',
     'plugin:react/recommended',
-    'plugin:relay/recommended',
     'plugin:react-hooks/recommended',
-    'eslint:recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
   ],
   parserOptions: {
-    ecmaFeatures: { jsx: true },
-    ecmaVersion: 11,
+    ecmaVersion: 'latest',
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  plugins: ['react', 'prettier', 'relay', 'import'],
   rules: {
-    'max-len': ['warn', { code: 120 }],
-    'no-restricted-globals': 'off',
-    'import/prefer-default-export': 'off',
-
-    'relay/generated-flow-types': 'off',
-    'relay/unused-fields': 'off',
+    semi: ['error', 'always'],
+    curly: ['error', 'all'],
+    camelcase: 'off',
 
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-one-expression-per-line': 'off',
-    'react/button-has-type': 'off',
+    'react/jsx-filename-extension': ['off', { extensions: ['.js', '.jsx'] }],
+    'react/prop-types': 'off',
+    'react/require-default-props': 'off',
 
-    'import/no-unresolved': [2, { commonjs: true, amd: true }],
-    'import/named': 2,
-    'import/namespace': 2,
-    'import/default': 2,
-    'import/export': 2,
+    'arrow-body-style': 'off',
+    'require-await': 'error',
+    'no-console': ['warn', { allow: ['warn', 'info', 'error'] }],
 
-    'react/jsx-filename-extension': [
-      'error',
-      {
-        extensions: ['.js', '.jsx'],
-      },
-    ],
-
+    'import/prefer-default-export': 'off',
+    'import/no-import-module-exports': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
       {
         js: 'never',
         jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+        '': 'never',
       },
     ],
   },
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:import/typescript',
+      ],
+      plugins: ['@typescript-eslint'],
+      rules: {
+        '@typescript-eslint/no-non-null-assertion': 'off',
+      },
+    },
+  ],
   settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
     'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: ['packages/*/tsconfig.json', 'tsconfig.base.json'],
+      },
+      'babel-module': {},
       node: {
         paths: ['src'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
+    },
+    react: {
+      version: 'detect',
     },
   },
 };

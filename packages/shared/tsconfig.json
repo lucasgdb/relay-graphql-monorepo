@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowJs": false,
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "extends": "../../tsconfig.base.json",
+  "include": ["src"],
+  "exclude": ["**/__tests__"]
+}

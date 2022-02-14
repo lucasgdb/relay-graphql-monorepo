@@ -1,9 +1,9 @@
 module.exports = {
-  presets: ['@babel/preset-env'],
+  presets: ['@babel/preset-typescript', '@babel/preset-env'],
   plugins: [
     '@babel/plugin-transform-runtime',
-    '@babel/plugin-proposal-function-bind',
-    'babel-plugin-module-resolver',
+    ['babel-plugin-module-resolver', { root: ['./src'] }],
+    '@babel/plugin-proposal-export-default-from',
+    'babel-plugin-lodash',
   ],
-  ignore: ['node_modules', 'build', '**/*.spec.js', '**/*.test.js'],
 };

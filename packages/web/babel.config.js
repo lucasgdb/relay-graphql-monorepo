@@ -7,20 +7,13 @@ module.exports = {
       },
     ],
     '@babel/preset-env',
+    '@babel/preset-typescript',
   ],
   plugins: [
-    [
-      'relay',
-      {
-        schema: '../server/schema.graphql',
-      },
-    ],
+    ['relay', { schema: '../server/schema.graphql' }],
+    ['babel-plugin-module-resolver', { root: ['./src'] }],
     '@babel/plugin-transform-runtime',
-    '@babel/plugin-proposal-object-rest-spread',
-    '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-export-default-from',
-    '@babel/plugin-proposal-export-namespace-from',
-    'module-resolver',
+    ['babel-plugin-styled-components', { ssr: false }],
   ],
-  ignore: [/node_modules/, /build/],
 };

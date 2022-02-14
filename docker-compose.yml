@@ -1,12 +1,12 @@
 version: '2.4'
 
 services:
-  postgres:
+  database:
     extends:
       file: packages/database/docker-compose.yml
-      service: postgres
+      service: database
     volumes:
-      - example_postgres_data:/var/lib/postgresql/data
+      - example_database_data:/var/lib/postgresql/data
       - './packages/database/init-user-db.sql:/docker-entrypoint-initdb.d/init-user-db.sql'
     healthcheck:
       test: '!</dev/tcp/db/5432'
@@ -18,10 +18,10 @@ services:
     volumes:
       - $PWD:/relay-graphql-monorepo
     healthcheck:
-      test: 'node hc.js'
+      test: 'node hc.mjs'
       timeout: 3s
     depends_on:
-      postgres:
+      database:
         condition: service_healthy
 
   web:
@@ -45,4 +45,4 @@ services:
         condition: service_healthy
 
 volumes:
-  example_postgres_data:
+  example_database_data:

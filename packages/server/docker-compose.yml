@@ -2,9 +2,9 @@ version: '2.4'
 
 services:
   server:
-    build: .
+    image: node:16.14.0-alpine3.14
     container_name: example-server
     working_dir: /relay-graphql-monorepo/packages/server
-    entrypoint: yarn start-dev
+    entrypoint: yarn start:dev
     ports:
-      - '8080:8080'
+      - 8080:8080
