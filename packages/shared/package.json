@@ -3,6 +3,5 @@
   "private": true,
   "version": "1.0.0",
   "license": "ISC",
-  "main": "src/index.ts",
-  "devDependencies": {}
+  "main": "src/index.ts"
 }
