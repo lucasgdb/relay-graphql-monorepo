@@ -21,7 +21,7 @@ export const getUserOrThrowError = (context: IContext) => {
   return context.user;
 };
 
-export default () => {
+const auth = () => {
   const strategy = new Strategy(params, (payload, done) => {
     const { id } = payload;
 
@@ -32,33 +32,34 @@ export default () => {
 
   return {
     initialize: () => passport.initialize(),
-    authenticate:
-      () => (request: Request, response: Response, next: NextFunction) => {
-        passport.authenticate('jwt', async (err, payload) => {
-          if (err) {
-            return next(err);
-          }
+    authenticate: () => (req: Request, res: Response, next: NextFunction) => {
+      passport.authenticate('jwt', async (err, payload) => {
+        if (err) {
+          return next(err);
+        }
 
-          if (!payload) {
-            return next();
-          }
-
-          const authEntity = AuthModel(exampleConnector);
-          const userEntity = UserModel(exampleConnector);
-
-          const login = await authEntity.getLoginById(payload.id);
-
-          if (!login?.active) {
-            return next();
-          }
-
-          const user = await userEntity.getUserById(login.user_id!);
-
-          request.login = login;
-          request.user = user;
-
+        if (!payload) {
           return next();
-        })(request, response, next);
-      },
+        }
+
+        const authEntity = AuthModel(exampleConnector);
+        const userEntity = UserModel(exampleConnector);
+
+        const login = await authEntity.getLoginById(payload.id);
+
+        if (!login?.active) {
+          return next();
+        }
+
+        const user = await userEntity.getUserById(login.user_id!);
+
+        req.login = login;
+        req.user = user;
+
+        return next();
+      })(req, res, next);
+    },
   };
 };
+
+export default auth;

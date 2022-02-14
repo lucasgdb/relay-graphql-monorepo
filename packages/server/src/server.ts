@@ -2,6 +2,12 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import 'dayjs/locale/pt-br';
 
+import dayjs from 'dayjs';
+import localeData from 'dayjs/plugin/localeData';
+
+dayjs.locale('pt-br');
+dayjs.extend(localeData);
+
 import { graphqlHTTP } from 'express-graphql';
 import { printSchema } from 'graphql/utilities';
 import fs from 'fs';
@@ -11,18 +17,15 @@ import express, { json, urlencoded } from 'express';
 import type { Request, Response, NextFunction } from 'express';
 import expressPlayground from 'graphql-playground-middleware-express';
 import compression from 'compression';
-import dayjs from 'dayjs';
-import localeData from 'dayjs/plugin/localeData';
 
 import schema from './modules/schema';
 import auth from './utils/auth';
 import apiServer from './apiServer';
 
-dayjs.locale('pt-br');
-dayjs.extend(localeData);
-
 const { NODE_ENV, GRAPHQL_PORT, GRAPHQL_BASE_URL } = process.env;
+
 const isDevelopmentMode = NODE_ENV?.toUpperCase() === 'DEVELOPMENT';
+
 const graphQLServer = express();
 const jwtAuth = auth();
 
@@ -34,22 +37,22 @@ const corsConfig = {
 
 graphQLServer.use(compression());
 
-graphQLServer.use((req: Request, _res: Response, next: NextFunction) => {
-  req.start = Date.now();
-  return next();
-});
-
 graphQLServer.use(cors(corsConfig));
 graphQLServer.use(json({ limit: '10mb' }));
 graphQLServer.use(urlencoded({ extended: true }));
-graphQLServer.use(jwtAuth.initialize());
 
 apiServer(graphQLServer);
 
-graphQLServer.all('/graphql*', jwtAuth.authenticate());
+const addRequestStart = (req: Request, _res: Response, next: NextFunction) => {
+  req.start = Date.now();
+  return next();
+};
 
 graphQLServer.use(
   '/graphql',
+  jwtAuth.initialize(),
+  jwtAuth.authenticate(),
+  addRequestStart,
   graphqlHTTP((request: unknown) => ({
     schema,
     context: {

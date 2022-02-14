@@ -38,7 +38,9 @@ const mutationFieldsInfo = mutationPaths.map((mutationPath) => [
 
 const mutationFields = mutationFieldsInfo.reduce(mutationFieldsReducer, {});
 
-export default new GraphQLObjectType({
+const MutationType = new GraphQLObjectType({
   name: 'Mutation',
   fields: mutationFields,
 });
+
+export default MutationType;
