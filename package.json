@@ -11,6 +11,7 @@
     "typesync": "npx typesync --ignoredeps=dev",
     "start": "docker-compose up -d",
     "stop": "docker-compose down",
+    "test": "jest --verbose --detectOpenHandles --forceExit",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -23,8 +24,10 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^27.4.0",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
+    "babel-jest": "^27.5.1",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
@@ -35,8 +38,10 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.4",
+    "jest": "^27.5.1",
     "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",
+    "ts-jest": "^27.1.3",
     "typescript": "^4.5.5"
   },
   "workspaces": {
