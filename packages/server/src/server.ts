@@ -94,10 +94,8 @@ if (isDevelopmentMode) {
 graphQLServer.listen(GRAPHQL_PORT, () => {
   console.info(`GraphQL Server is now running on ${GRAPHQL_BASE_URL}`);
 
-  if (isDevelopmentMode) {
-    const graphQLFile = path.resolve(__dirname, '../schema.graphql');
-    const schemaString = printSchema(schema);
+  const graphQLFile = path.resolve(__dirname, '../schema.graphql');
+  const schemaString = printSchema(schema);
 
-    fs.writeFileSync(graphQLFile, schemaString);
-  }
+  fs.writeFileSync(graphQLFile, schemaString);
 });
