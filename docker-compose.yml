@@ -25,6 +25,7 @@ services:
     entrypoint: yarn start:dev
     ports:
       - 8080:8080
+      - 9229:9229 # enable nodejs devtools debugger
     healthcheck:
       test: 'node hc.mjs'
       timeout: 3s
