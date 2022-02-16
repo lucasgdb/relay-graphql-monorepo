@@ -7,7 +7,6 @@ module.exports = {
       },
     },
   },
-  testEnvironment: 'node',
   transformIgnorePatterns: ['/node_modules/(?!@babel/runtime)', 'build'],
   testPathIgnorePatterns: ['node_modules', 'build'],
 };
