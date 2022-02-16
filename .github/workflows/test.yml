@@ -6,9 +6,7 @@ on:
       - master
       - homolog
     paths:
-      - 'yarn.lock'
-      - 'package.json'
-      - 'packages/shared'
+      - '**/*'
 
 jobs:
   test:
