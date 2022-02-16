@@ -33,7 +33,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn
+        run: yarn --prefer-offline --frozen-lockfile --ignore-scripts --non-interactive
 
       - name: Run tests
         run: yarn test
