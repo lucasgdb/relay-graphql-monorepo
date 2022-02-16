@@ -8,6 +8,8 @@ services:
       - POSTGRES_USER=example_user
       - POSTGRES_DB=example_database
       - POSTGRES_PASSWORD=example_password
+    ports:
+      - 5432:5432
     volumes:
       - example_database_data:/var/lib/postgresql/data
       - ./database/init-user-db.sql:/docker-entrypoint-initdb.d/init-user-db.sql
