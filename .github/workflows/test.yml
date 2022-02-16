@@ -43,4 +43,4 @@ jobs:
         run: yarn test
 
       - name: Finish
-        run: echo "Tested!"
+        run: echo "Finished!"
