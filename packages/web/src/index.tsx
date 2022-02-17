@@ -1,12 +1,13 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-import { render } from 'react-dom';
+import * as ReactDOM from 'react-dom';
 
 import App from './App';
 
-render(<App />, document.getElementById('root'));
+const container = document.getElementById('root');
+// @ts-expect-error it's an experimental feature of React, so it wasn't added to DefinitelyTyped yet.
+const root = ReactDOM.createRoot(container);
+root.render(<App />);
 
-if (module.hot) {
-  module.hot.accept();
-}
+module.hot?.accept();
