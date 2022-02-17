@@ -27,7 +27,6 @@ export default class ErrorBoundary extends React.Component<
         <DefaultErrorPage
           title="Ooops!"
           description="Aconteceu um problema."
-          // eslint-disable-next-line max-len
           information="A página que você está procurando está temporariamente indisponível. Já estamos atuando para solucionar o mais breve possível, enquanto isso, que tal acessar uma das opções abaixo?"
           actionText="Tentar novamente"
           onActionClick={onActionClick}
