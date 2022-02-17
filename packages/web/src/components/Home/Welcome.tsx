@@ -1,32 +1,26 @@
-import { graphql, useQuery } from 'relay-hooks';
+import { graphql, useFragment } from 'relay-hooks';
 
 import LogoutButton from '../LogoutButton';
-import { WelcomeQuery } from './__generated__/WelcomeQuery.graphql';
+import { Welcome_viewer$key } from './__generated__/Welcome_viewer.graphql';
 
-const query = graphql`
-  query WelcomeQuery {
-    viewer @required(action: LOG) {
-      fullname
-      email
-    }
+const fragment = graphql`
+  fragment Welcome_viewer on User {
+    fullname
+    email
   }
 `;
 
-export default function Welcome() {
-  const { data, error, isLoading } = useQuery<WelcomeQuery>(query);
+type WelcomeProps = {
+  viewer: Welcome_viewer$key;
+};
 
-  if (isLoading) {
-    return <div>Carregando</div>;
-  }
-
-  if (error || !data) {
-    return null;
-  }
+export default function Welcome({ viewer }: WelcomeProps) {
+  const data = useFragment<Welcome_viewer$key>(fragment, viewer);
 
   return (
     <div>
       <p>
-        Olá, {data.viewer?.fullname}! Seu e-mail é {data.viewer?.email}!
+        Olá, {data.fullname}! Seu e-mail é {data.email}!
       </p>
 
       <LogoutButton />
