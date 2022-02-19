@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 
 services:
   database:
@@ -12,16 +12,14 @@ services:
       - 5432:5432
     volumes:
       - example_database_data:/var/lib/postgresql/data
-      - ./database/init-user-db.sql:/docker-entrypoint-initdb.d/init-user-db.sql
     healthcheck:
       test: '!</dev/tcp/db/5432'
-
   server:
     image: node:lts-alpine3.14
     container_name: server
-    working_dir: /relay-graphql-monorepo/packages/server
+    working_dir: /src/packages/server
     volumes:
-      - $PWD:/relay-graphql-monorepo
+      - .:/src
     entrypoint: yarn start:dev
     ports:
       - 8080:8080
@@ -32,20 +30,18 @@ services:
     depends_on:
       database:
         condition: service_healthy
-
   web:
     image: node:lts-alpine3.14
     container_name: web
-    working_dir: /relay-graphql-monorepo/packages/web
+    working_dir: /src/packages/web
     volumes:
-      - $PWD:/relay-graphql-monorepo
+      - .:/src
     entrypoint: yarn start:dev
     ports:
       - 8081:8081
     depends_on:
       server:
         condition: service_healthy
-
   nginx:
     image: nginx:latest
     container_name: nginx
