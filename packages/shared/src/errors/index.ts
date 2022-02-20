@@ -1,4 +1,2 @@
-import errorConfig from './errorConfig';
-
-export * from './errorHandler';
-export { errorConfig };
+export { default as errorConfig } from './errorConfig';
+export { default as getError } from './getError';

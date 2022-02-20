@@ -22,12 +22,8 @@ export default function RegisterButton() {
       onError: (errors) => {
         const { duplicatedEmail } = errorConfig.user;
 
-        const isUserAlreadyExistsError = getError(
-          errors as unknown as Error[],
-          duplicatedEmail.code
-        );
-
-        if (isUserAlreadyExistsError) {
+        const userAlreadyExistsError = getError(errors, duplicatedEmail.code);
+        if (userAlreadyExistsError) {
           enqueueSnackbar('Este usuário já existe!', { variant: 'error' });
         }
       },
