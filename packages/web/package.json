@@ -7,7 +7,7 @@
   "scripts": {
     "relay": "relay-compiler",
     "start:dev": "webpack serve --config webpack.dev.js",
-    "pre:build": "yarn --frozen-lockfile && rm -rf build && yarn relay",
+    "pre:build": "yarn --frozen-lockfile && yarn relay",
     "build:homolog": "yarn pre:build && webpack --config webpack.homolog.js",
     "build": "yarn pre:build && webpack --config webpack.prod.js"
   },

@@ -8,6 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: '[contenthash].bundle.js',
     asyncChunks: true,
+    clean: true,
   },
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
