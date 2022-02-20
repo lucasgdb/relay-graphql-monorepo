@@ -1,12 +1,10 @@
 import { graphql, useQuery } from 'relay-hooks';
 import styled from 'styled-components';
-import Container from '@mui/material/Container';
 import { Outlet } from 'react-router-dom';
 
 import { EnvironmentLayoutQuery } from './__generated__/EnvironmentLayoutQuery.graphql';
-import LoginButton from '~/components/LoginButton';
-import RegisterButton from '~/components/RegisterButton';
 import PageLoader from '~/components/PageLoader';
+import LoginPage from '~/pages/Login/LoginPage';
 
 const query = graphql`
   query EnvironmentLayoutQuery {
@@ -26,14 +24,7 @@ export default function EnvironmentLayout() {
   }
 
   if (!data?.auth?.isLogged) {
-    return (
-      <Container>
-        <p>Você não está autenticado!</p>
-
-        <LoginButton />
-        <RegisterButton />
-      </Container>
-    );
+    return <LoginPage />;
   }
 
   return (

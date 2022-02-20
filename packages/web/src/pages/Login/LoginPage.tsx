@@ -1,26 +1,23 @@
 import { graphql, useQuery } from 'relay-hooks';
 import Container from '@mui/material/Container';
 
-import Welcome from '~/components/Home/Welcome';
-import { HomePageQuery } from './__generated__/HomePageQuery.graphql';
+import { LoginPageQuery } from './__generated__/LoginPageQuery.graphql';
 import PageLoader from '~/components/PageLoader';
 import { DefaultErrorPage } from '@example/components';
 import Articles from '~/components/Home/Articles';
+import LoginButton from '~/components/LoginButton';
+import RegisterButton from '~/components/RegisterButton';
 
 const query = graphql`
-  query HomePageQuery {
-    viewer {
-      ...Welcome_viewer
-    }
-
+  query LoginPageQuery {
     system {
       ...Articles_system
     }
   }
 `;
 
-export default function HomePage() {
-  const { data, error, isLoading } = useQuery<HomePageQuery>(query);
+export default function LoginPage() {
+  const { data, error, isLoading } = useQuery<LoginPageQuery>(query);
 
   if (isLoading) {
     return <PageLoader />;
@@ -41,7 +38,11 @@ export default function HomePage() {
 
   return (
     <Container>
-      <Welcome viewer={data!.viewer} />
+      <p>Você não está autenticado!</p>
+
+      <LoginButton />
+      <RegisterButton />
+
       <Articles system={data!.system!} />
     </Container>
   );

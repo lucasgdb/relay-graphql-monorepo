@@ -28,6 +28,10 @@ const getNode = async (table: string, id: string, context: IContext) => {
     .where('id', id)
     .first();
 
+  if (!data) {
+    return { _type: table };
+  }
+
   return { ...data, _type: table };
 };
 
