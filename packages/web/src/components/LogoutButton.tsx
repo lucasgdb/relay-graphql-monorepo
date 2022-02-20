@@ -10,6 +10,9 @@ export default function LogoutButton() {
       jwtToken.destroy();
       window.location.reload();
     },
+    onError: () => {
+      window.location.reload();
+    },
   });
 
   const handleClick = () => logoutMutation({ variables: { input: {} } });
