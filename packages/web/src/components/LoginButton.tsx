@@ -1,3 +1,5 @@
+import { errorConfig, getError } from '@example/shared';
+import { Notification } from '@example/components';
 import { useMutation } from 'relay-hooks';
 import Button from '@mui/material/Button';
 
@@ -6,6 +8,8 @@ import LoginMutation from '~/modules/auth/LoginMutation';
 import { LoginMutation as LoginMutationType } from '~/modules/auth/__generated__/LoginMutation.graphql';
 
 export default function LoginButton() {
+  const { enqueueSnackbar } = Notification.useSnackbar();
+
   const [loginMutation, { loading }] = useMutation<LoginMutationType>(
     LoginMutation,
     {
@@ -13,6 +17,14 @@ export default function LoginButton() {
         if (login?.jwtToken) {
           jwtToken.set(login.jwtToken);
           window.location.reload();
+        }
+      },
+      onError: (errors) => {
+        const { notFound } = errorConfig.user;
+
+        const userNotFoundError = getError(errors, notFound.code);
+        if (userNotFoundError) {
+          enqueueSnackbar('Usuário não encontrado!', { variant: 'error' });
         }
       },
     }
