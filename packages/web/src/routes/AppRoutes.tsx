@@ -16,8 +16,9 @@ export default function AppRoutes() {
         <Routes>
           <Route element={<EnvironmentLayout />}>
             <Route index element={<HomePage />} />
-            <Route path="*" element={<ErrorPage />} />
           </Route>
+
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </React.Suspense>
     </HashRouter>
