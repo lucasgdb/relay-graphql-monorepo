@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
     "allowJs": false,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
     "target": "ESNext",
     "module": "CommonJS",
     "resolveJsonModule": true,
