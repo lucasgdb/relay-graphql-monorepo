@@ -22,7 +22,7 @@ services:
       - .:/src
     entrypoint: yarn start:dev
     ports:
-      - 8080:8080
+      - 3000:3000
       - 9229:9229 # enable nodejs devtools debugger
     healthcheck:
       test: 'node hc.mjs'
@@ -38,7 +38,7 @@ services:
       - .:/src
     entrypoint: yarn start:dev
     ports:
-      - 8081:8081
+      - 8080:8080
     depends_on:
       server:
         condition: service_healthy

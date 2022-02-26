@@ -1,6 +1,6 @@
 import { get } from 'http';
 
-get('http://localhost:8080/api/hc', (res) => {
+get('http://localhost:3000/api/hc', (res) => {
   if (res.statusCode === 200) {
     process.exit(0);
   }

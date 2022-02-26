@@ -23,7 +23,7 @@ module.exports = merge(webpackConfig, {
     allowedHosts: 'all',
     historyApiFallback: true,
     hot: true,
-    port: 8081,
+    port: 8080,
     open: true,
   },
   plugins: [

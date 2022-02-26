@@ -13,7 +13,7 @@
 - `yarn`: Installs workspace dependencies
 - Don't forget to copy/paste the `.env.example` files to `.env`
 - `yarn start`: Starts the project using Docker
-- Open the web app at `http://localhost:8081`
+- Open the web app at `http://localhost:8080`
 - Type `yarn stop` to stop the project
 
 ### Development mode without Docker

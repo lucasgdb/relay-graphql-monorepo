@@ -13,7 +13,7 @@ const handleData = (response: Response) => {
   return response.text();
 };
 
-export const GRAPHQL_URL = `${process.env.GRAPHQL_BASE_URL}/graphql`;
+export const GRAPHQL_URL = `${process.env.SERVER_BASE_URL}/graphql`;
 
 const fetchQuery = async (request: RequestParameters, variables: Variables) => {
   try {
