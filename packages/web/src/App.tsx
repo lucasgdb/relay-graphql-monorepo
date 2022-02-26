@@ -6,11 +6,12 @@ import AppRoutes from './routes/AppRoutes';
 
 export default function App() {
   return (
-    <ErrorBoundary onActionClick={() => window.location.reload()}>
-      <Providers>
-        <CssBaseline />
+    <Providers>
+      <CssBaseline />
+
+      <ErrorBoundary onActionClick={() => window.location.reload()}>
         <AppRoutes />
-      </Providers>
-    </ErrorBoundary>
+      </ErrorBoundary>
+    </Providers>
   );
 }
