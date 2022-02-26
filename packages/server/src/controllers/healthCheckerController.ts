@@ -1,11 +1,16 @@
-import type { Request, Response } from 'express';
+import type { RouterContext } from '@koa/router';
 
 import exampleConnector from '~/database/exampleConnector';
 
-export const healthCheckerGet = async (_req: Request, res: Response) => {
-  if (await exampleConnector.checkConnection()) {
-    return res.status(200).send('OK');
+export const healthCheckerGet = async (ctx: RouterContext) => {
+  const hasConnection = await exampleConnector.checkConnection();
+  if (hasConnection) {
+    ctx.status = 200;
+    ctx.body = 'OK';
+
+    return;
   }
 
-  return res.status(404).send('DB out of service!');
+  ctx.status = 400;
+  ctx.body = 'DB out of service!';
 };

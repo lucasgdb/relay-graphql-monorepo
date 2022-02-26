@@ -1,7 +1,7 @@
 import { errorConfig } from '@example/shared';
 import passport from 'passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import type { Request, Response, NextFunction } from 'express';
+import type { Context, Next } from 'koa';
 
 import UserModel from '~/entities/User/UserModel';
 import AuthModel from '~/entities/Auth/AuthModel';
@@ -21,8 +21,20 @@ export const getUserOrThrowError = (context: IContext) => {
   return context.user;
 };
 
+const getPayload = (ctx: Context): Promise<{ id: string }> | false => {
+  return new Promise((resolve, reject) => {
+    passport.authenticate('jwt', (err, payload) => {
+      if (err) {
+        reject(err);
+      }
+
+      resolve(payload);
+    })(ctx.request, ctx.response);
+  });
+};
+
 const auth = () => {
-  const strategy = new Strategy(params, (payload, done) => {
+  const strategy = new Strategy(params, (payload: { id: string }, done) => {
     const { id } = payload;
 
     return done(null, { id });
@@ -31,32 +43,30 @@ const auth = () => {
   passport.use(strategy);
 
   return {
-    initialize: () => passport.initialize(),
-    authenticate: () => (req: Request, res: Response, next: NextFunction) => {
-      passport.authenticate('jwt', async (err, payload) => {
-        if (err) {
-          return next(err);
-        }
-
-        if (!payload) {
-          return next();
-        }
-
-        const authEntity = AuthModel(exampleConnector);
-
-        const login = await authEntity.getLoginById(payload.id);
-        if (!login?.active) {
-          return next();
-        }
-
-        const userEntity = UserModel(exampleConnector);
-        const user = await userEntity.getUserById(login.user_id!);
-
-        req.loginId = login.id;
-        req.user = user;
-
+    initialize: (_ctx: Context, next: Next) => {
+      passport.initialize();
+      return next();
+    },
+    authenticate: async (ctx: Context, next: Next) => {
+      const payload = await getPayload(ctx);
+      if (!payload) {
         return next();
-      })(req, res, next);
+      }
+
+      const authEntity = AuthModel(exampleConnector);
+
+      const login = await authEntity.getLoginById(payload.id);
+      if (!login?.active) {
+        return next();
+      }
+
+      const userEntity = UserModel(exampleConnector);
+      const user = await userEntity.getUserById(login.user_id!);
+
+      ctx.request.loginId = login.id;
+      ctx.request.user = user;
+
+      return next();
     },
   };
 };

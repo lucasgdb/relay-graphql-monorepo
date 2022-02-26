@@ -1,9 +1,13 @@
-import type { Express } from 'express';
+import Router from '@koa/router';
 
 import { healthCheckerGet } from './controllers/healthCheckerController';
 
-const apiServer = (server: Express) => {
-  server.get('/hc', healthCheckerGet);
+const router = new Router();
+
+const apiServer = () => {
+  router.get('/hc', healthCheckerGet);
+
+  return router;
 };
 
 export default apiServer;
