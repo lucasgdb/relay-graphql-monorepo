@@ -19,13 +19,12 @@ module.exports = merge(webpackConfig, {
       overlay: true,
       progress: false,
     },
-    host: '0.0.0.0',
     compress: true,
     allowedHosts: 'all',
     historyApiFallback: true,
     hot: true,
     port: 8081,
-    open: false,
+    open: true,
   },
   plugins: [
     new DotEnv({
