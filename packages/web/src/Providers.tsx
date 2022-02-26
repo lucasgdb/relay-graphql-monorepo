@@ -8,7 +8,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import dayjs from 'dayjs';
 
-import { environment } from './relay';
+import { environment } from './utils/relay';
 
 dayjs.locale('pt-br');
 
