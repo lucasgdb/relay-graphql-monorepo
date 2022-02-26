@@ -20,7 +20,7 @@ export default function Welcome({ viewer }: WelcomeProps) {
   return (
     <div>
       <p>
-        Olá, {data.fullname}! Seu e-mail é {data.email}!
+        Hello, {data.fullname}! Your e-mail is {data.email}!
       </p>
 
       <LogoutButton />

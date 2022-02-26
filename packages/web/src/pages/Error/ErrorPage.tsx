@@ -7,9 +7,9 @@ export default function ErrorPage() {
   return (
     <DefaultErrorPage
       title="Ooops!"
-      description="Página não encontrada."
-      information="A página que você está acessando não existe ou está temporariamente indisponível. Enquanto isso, que tal acessar uma das opções abaixo?"
-      actionText="Página Inicial"
+      description="Page not found."
+      information="The page you are accessing does not exist or is temporarily unavailable. In the meantime, how about accessing one of the options below?"
+      actionText="Home page"
       onActionClick={() => navigate('/')}
       disableOptionalButton
     />

@@ -24,7 +24,7 @@ export default function LoginButton() {
 
         const userNotFoundError = getError(errors, notFound.code);
         if (userNotFoundError) {
-          enqueueSnackbar('Usuário não encontrado!', { variant: 'error' });
+          enqueueSnackbar('User not found.', { variant: 'error' });
         }
       },
     }

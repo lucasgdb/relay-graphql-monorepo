@@ -5,43 +5,43 @@ export const seed = async (knex: Knex) => {
 
   await knex('article').insert([
     {
-      title: 'Artigo 01',
+      title: 'Article 01',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deserunt et eos molestiae, minus quia praesentium sint ducimus error. Magni ab at voluptate deserunt earum aspernatur amet accusamus, perspiciatis necessitatibus.',
     },
     {
-      title: 'Artigo 02',
+      title: 'Article 02',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deserunt et eos molestiae, minus quia praesentium sint ducimus error. Magni ab at voluptate deserunt earum aspernatur amet accusamus, perspiciatis necessitatibus.',
     },
     {
-      title: 'Artigo 03',
+      title: 'Article 03',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deserunt et eos molestiae, minus quia praesentium sint ducimus error. Magni ab at voluptate deserunt earum aspernatur amet accusamus, perspiciatis necessitatibus.',
     },
     {
-      title: 'Artigo 04',
+      title: 'Article 04',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deserunt et eos molestiae, minus quia praesentium sint ducimus error. Magni ab at voluptate deserunt earum aspernatur amet accusamus, perspiciatis necessitatibus.',
     },
     {
-      title: 'Artigo 05',
+      title: 'Article 05',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deserunt et eos molestiae, minus quia praesentium sint ducimus error. Magni ab at voluptate deserunt earum aspernatur amet accusamus, perspiciatis necessitatibus.',
     },
     {
-      title: 'Artigo 06',
+      title: 'Article 06',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deserunt et eos molestiae, minus quia praesentium sint ducimus error. Magni ab at voluptate deserunt earum aspernatur amet accusamus, perspiciatis necessitatibus.',
     },
     {
-      title: 'Artigo 07',
+      title: 'Article 07',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deserunt et eos molestiae, minus quia praesentium sint ducimus error. Magni ab at voluptate deserunt earum aspernatur amet accusamus, perspiciatis necessitatibus.',
     },
     {
-      title: 'Artigo 08',
+      title: 'Article 08',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deserunt et eos molestiae, minus quia praesentium sint ducimus error. Magni ab at voluptate deserunt earum aspernatur amet accusamus, perspiciatis necessitatibus.',
     },
     {
-      title: 'Artigo 09',
+      title: 'Article 09',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deserunt et eos molestiae, minus quia praesentium sint ducimus error. Magni ab at voluptate deserunt earum aspernatur amet accusamus, perspiciatis necessitatibus.',
     },
     {
-      title: 'Artigo 10',
+      title: 'Article 10',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deserunt et eos molestiae, minus quia praesentium sint ducimus error. Magni ab at voluptate deserunt earum aspernatur amet accusamus, perspiciatis necessitatibus.',
     },
   ]);

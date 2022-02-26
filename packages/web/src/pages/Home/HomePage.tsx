@@ -30,9 +30,9 @@ export default function HomePage() {
     return (
       <DefaultErrorPage
         title="Ooops!"
-        description="Aconteceu um problema."
-        information={`Ocorreu um erro do servidor. Código de erro: ${error.message}`}
-        actionText="Tentar novamente"
+        description="There was a problem."
+        information={`A server error has occurred. Error code: ${error.message}`}
+        actionText="Try again"
         onActionClick={() => window.location.reload()}
         disableOptionalButton
       />

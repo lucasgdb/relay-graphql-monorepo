@@ -44,7 +44,7 @@ export default function Article({ article }: ArticleProps) {
     <OuterArticle>
       <Title>{data.title}</Title>
       <CreatedAt>
-        Data de publicação: {dayjs(data.created_at).format('DD/MM/YYYY')}
+        Publication date: {dayjs(data.created_at).format('DD/MM/YYYY')}
       </CreatedAt>
       <Text>{data.text}</Text>
     </OuterArticle>
