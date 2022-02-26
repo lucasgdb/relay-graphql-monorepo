@@ -45,7 +45,7 @@ router.post(
     customFormatErrorFn: (error) => {
       console.error(
         `ERROR[${dayjs().format('HH:mm:ss DD/MM/YYYY')}][${
-          error.path ? error.path.join(' -> ') : ''
+          error.path?.join(' -> ') ?? ''
         }] ===> ${error.message}`
       );
 
