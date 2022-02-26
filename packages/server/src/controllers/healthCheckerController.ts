@@ -13,6 +13,4 @@ export const healthCheckerGet = async (ctx: Context) => {
 
   ctx.status = 400;
   ctx.body = 'DB out of service!';
-
-  return;
 };
