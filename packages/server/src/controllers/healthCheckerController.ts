@@ -1,8 +1,8 @@
-import type { RouterContext } from '@koa/router';
+import type { Context } from 'koa';
 
 import exampleConnector from '~/database/exampleConnector';
 
-export const healthCheckerGet = async (ctx: RouterContext) => {
+export const healthCheckerGet = async (ctx: Context) => {
   const hasConnection = await exampleConnector.checkConnection();
   if (hasConnection) {
     ctx.status = 200;
@@ -13,4 +13,6 @@ export const healthCheckerGet = async (ctx: RouterContext) => {
 
   ctx.status = 400;
   ctx.body = 'DB out of service!';
+
+  return;
 };

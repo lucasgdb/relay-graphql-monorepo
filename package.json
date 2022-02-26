@@ -11,6 +11,8 @@
     "typesync": "npx typesync --ignoredeps=dev",
     "start": "docker-compose up -d",
     "stop": "docker-compose down",
+    "start:server": "yarn workspace @example/server start:dev",
+    "start:web": "yarn workspace @example/web start:dev",
     "test": "jest --verbose --detectOpenHandles --forceExit",
     "prepare": "husky install"
   },
