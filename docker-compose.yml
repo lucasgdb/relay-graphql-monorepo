@@ -42,19 +42,6 @@ services:
     depends_on:
       server:
         condition: service_healthy
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
-    ports:
-      - 80:80
-    environment:
-      - NGINX_PORT=80
-    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/nginx.conf > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
-    depends_on:
-      server:
-        condition: service_healthy
 
 volumes:
   example_database_data:
