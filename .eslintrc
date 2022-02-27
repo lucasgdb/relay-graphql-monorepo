@@ -27,6 +27,7 @@
     "curly": ["error", "all"],
     "camelcase": "off",
     "no-useless-return": "error",
+    "import/no-named-as-default-member": "off",
 
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
