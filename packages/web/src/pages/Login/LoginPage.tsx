@@ -38,7 +38,7 @@ export default function LoginPage() {
 
   return (
     <Container>
-      <p>You are not authenticated!</p>
+      <p>You are not authenticated.</p>
 
       <LoginButton />
       <RegisterButton />
