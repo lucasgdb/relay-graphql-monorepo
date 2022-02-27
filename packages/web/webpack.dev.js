@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { merge } = require('webpack-merge');
 const WebpackBeforeBuildPlugin = require('before-build-webpack');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const DotEnv = require('dotenv-webpack');
 const path = require('path');
 const execa = require('execa');
@@ -26,6 +27,20 @@ module.exports = merge(webpackConfig, {
     port: 8080,
     open: true,
   },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        use: {
+          loader: 'babel-loader?cacheDirectory',
+          options: {
+            plugins: [require.resolve('react-refresh/babel')],
+          },
+        },
+        exclude: [/node_modules/],
+      },
+    ],
+  },
   plugins: [
     new DotEnv({
       path: '.env.development',
@@ -41,5 +56,7 @@ module.exports = merge(webpackConfig, {
         stop();
       }
     }),
-  ].filter(Boolean),
+
+    new ReactRefreshWebpackPlugin(),
+  ],
 });

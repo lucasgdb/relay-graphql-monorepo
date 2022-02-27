@@ -6,6 +6,15 @@ const webpackConfig = require('./webpack.config');
 
 module.exports = merge(webpackConfig, {
   mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        use: 'babel-loader?cacheDirectory',
+        exclude: [/node_modules/],
+      },
+    ],
+  },
   plugins: [
     new DotEnv({
       path: '.env.production',
