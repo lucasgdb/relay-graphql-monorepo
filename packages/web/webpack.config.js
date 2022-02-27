@@ -6,9 +6,22 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[contenthash].bundle.js',
+    filename: '[name].[contenthash].js',
     asyncChunks: true,
     clean: true,
+  },
+  optimization: {
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],

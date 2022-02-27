@@ -12,6 +12,11 @@ module.exports = merge(webpackConfig, {
   mode: 'development',
   devtool: 'eval',
   cache: true,
+  optimization: {
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
+  },
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'public'),
