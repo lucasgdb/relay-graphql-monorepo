@@ -52,6 +52,8 @@ module.exports = merge(webpackConfig, {
       try {
         const { stdout } = await execa('yarn', ['relay']);
         console.info(stdout, '\n');
+      } catch (err) {
+        console.error(err);
       } finally {
         stop();
       }
