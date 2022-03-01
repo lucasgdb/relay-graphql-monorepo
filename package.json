@@ -14,6 +14,7 @@
     "start:server": "yarn workspace @example/server start:dev",
     "start:web": "yarn workspace @example/web start:dev",
     "test": "jest --verbose --detectOpenHandles --forceExit",
+    "format": "prettier --write --check .",
     "prepare": "husky install"
   },
   "lint-staged": {
