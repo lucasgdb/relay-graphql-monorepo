@@ -25,8 +25,10 @@ services:
       - 3000:3000
       - 9229:9229 # enable nodejs devtools debugger
     healthcheck:
-      test: 'node hc.mjs'
+      test: 'wget -nv -t1 --spider http://localhost:3000/api/hc || exit 1'
+      interval: 5s
       timeout: 3s
+      retries: 5
     depends_on:
       database:
         condition: service_healthy
