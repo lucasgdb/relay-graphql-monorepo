@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from '@jest/types';
+
+const config: Config.InitialOptions = {
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
@@ -12,3 +14,5 @@ module.exports = {
   testEnvironment: 'node',
   setupFiles: ['core-js'],
 };
+
+export default config;
