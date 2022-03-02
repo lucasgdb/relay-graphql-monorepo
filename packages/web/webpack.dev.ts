@@ -1,14 +1,15 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const { merge } = require('webpack-merge');
-const WebpackBeforeBuildPlugin = require('before-build-webpack');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const DotEnv = require('dotenv-webpack');
-const path = require('path');
-const execa = require('execa');
+import 'webpack-dev-server';
 
-const webpackConfig = require('./webpack.config');
+import { merge } from 'webpack-merge';
+import WebpackBeforeBuildPlugin from 'before-build-webpack';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import DotEnv from 'dotenv-webpack';
+import path from 'path';
+import execa from 'execa';
 
-module.exports = merge(webpackConfig, {
+import webpackConfig from './webpack.config';
+
+const config = merge(webpackConfig, {
   mode: 'development',
   devtool: 'eval',
   cache: true,
@@ -53,17 +54,22 @@ module.exports = merge(webpackConfig, {
       silent: true,
     }),
 
-    new WebpackBeforeBuildPlugin(async (_stats, stop) => {
-      try {
-        const { stdout } = await execa('yarn', ['relay']);
-        console.info(stdout, '\n');
-      } catch (err) {
-        console.error(err);
-      } finally {
-        stop();
-      }
-    }),
+    new WebpackBeforeBuildPlugin(
+      async (_stats: unknown, stop: () => void) => {
+        try {
+          const { stdout } = await execa('yarn', ['relay']);
+          console.info(stdout, '\n');
+        } catch (err) {
+          console.error(err);
+        } finally {
+          stop();
+        }
+      },
+      ['run', 'watch-run']
+    ),
 
     new ReactRefreshWebpackPlugin(),
   ],
 });
+
+export default config;

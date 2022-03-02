@@ -1,8 +1,9 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import * as webpack from 'webpack';
 
-module.exports = {
+const config: webpack.Configuration = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -69,3 +70,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;
