@@ -1,9 +1,9 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
 import { GraphQLObjectType } from 'graphql';
-import { glob } from 'glob';
+import { sync } from 'glob';
 
-const mutationPaths = glob.sync(`${__dirname}/**/mutations/**/*.ts`, {
+const mutationPaths = sync(`${__dirname}/**/mutations/**/*.{js,ts}`, {
   realpath: true,
 });
 
