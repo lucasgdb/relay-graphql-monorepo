@@ -16,6 +16,7 @@ const config = merge(webpackConfig, {
     ],
   },
   plugins: [
+    // @ts-expect-error webpack types mismatching
     new DotEnv({
       path: '.env.production',
       safe: true,
