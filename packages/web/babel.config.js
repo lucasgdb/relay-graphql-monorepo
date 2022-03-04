@@ -11,7 +11,6 @@ module.exports = {
   ],
   plugins: [
     ['relay', { schema: '../server/schema.graphql' }],
-    ['babel-plugin-module-resolver', { root: ['./src'] }],
     '@babel/plugin-transform-runtime',
     '@babel/plugin-proposal-export-default-from',
     ['babel-plugin-styled-components', { ssr: false }],
