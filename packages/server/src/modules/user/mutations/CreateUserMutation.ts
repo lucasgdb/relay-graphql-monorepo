@@ -35,13 +35,7 @@ type createUserProps = {
   clientMutationId?: string;
 };
 
-const createUser = async ({
-  name,
-  lastname,
-  email,
-  password,
-  clientMutationId,
-}: createUserProps) => {
+const createUser = async ({ name, lastname, email, password, clientMutationId }: createUserProps) => {
   const userEntity = UserModel(exampleConnector);
 
   const user = await userEntity.getUserByEmail(email);

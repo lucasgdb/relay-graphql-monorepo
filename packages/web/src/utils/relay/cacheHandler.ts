@@ -9,11 +9,7 @@ export const relayResponseCache = new QueryResponseCache({
   ttl: oneMinute,
 });
 
-export const cacheHandler: FetchFunction = async (
-  request,
-  variables,
-  cacheConfig
-) => {
+export const cacheHandler: FetchFunction = async (request, variables, cacheConfig) => {
   const queryID = request.text ?? '';
 
   // clear cache if request is a mutation

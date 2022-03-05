@@ -63,10 +63,7 @@ const fetchQuery = async (request: RequestParameters, variables: Variables) => {
     const timeoutRegexp = /Still no successful response after/;
     const serverUnavailableRegexp = /Failed to fetch/;
 
-    if (
-      timeoutRegexp.test(err.message) ||
-      serverUnavailableRegexp.test(err.message)
-    ) {
+    if (timeoutRegexp.test(err.message) || serverUnavailableRegexp.test(err.message)) {
       throw new Error('Serviço indisponível. Tente novamente mais tarde.');
     }
 

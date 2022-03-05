@@ -79,11 +79,7 @@ export default function Menu() {
 
       <SocialMediaWrapper>
         {socialMedias.map((socialMedia) => (
-          <Hyperlink
-            key={socialMedia.id}
-            href={socialMedia.url}
-            target="_blank"
-          >
+          <Hyperlink key={socialMedia.id} href={socialMedia.url} target="_blank">
             {socialMedia.Icon}
           </Hyperlink>
         ))}

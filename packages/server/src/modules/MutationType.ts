@@ -15,9 +15,7 @@ const normalizeMutationName = (mutationName: string) => {
 const normalizeMutationLocation = (mutationLocation: string) => {
   const slashType = mutationLocation.includes('\\') ? '\\' : '/';
 
-  const newMutationLocation = mutationLocation.slice(
-    mutationLocation.lastIndexOf(slashType) + 1
-  );
+  const newMutationLocation = mutationLocation.slice(mutationLocation.lastIndexOf(slashType) + 1);
 
   return newMutationLocation.replace(/\.(js|ts)/, '');
 };

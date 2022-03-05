@@ -3,9 +3,7 @@ import * as React from 'react';
 
 import PageLoader from '~/components/PageLoader';
 
-const EnvironmentLayout = React.lazy(
-  () => import('~/layout/EnvironmentLayout')
-);
+const EnvironmentLayout = React.lazy(() => import('~/layout/EnvironmentLayout'));
 const ErrorPage = React.lazy(() => import('~/pages/Error/ErrorPage'));
 const HomePage = React.lazy(() => import('~/pages/Home/HomePage'));
 

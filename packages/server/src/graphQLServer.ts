@@ -26,11 +26,7 @@ const jwtAuthentication = auth();
 
 const router = new Router();
 
-router.use(
-  jwtAuthentication.initialize,
-  jwtAuthentication.authenticate,
-  addRequestStartedAt
-);
+router.use(jwtAuthentication.initialize, jwtAuthentication.authenticate, addRequestStartedAt);
 
 router.post(
   '/',
@@ -44,9 +40,7 @@ router.post(
     },
     customFormatErrorFn: (error) => {
       console.error(
-        `ERROR[${dayjs().format('HH:mm:ss DD/MM/YYYY')}][${
-          error.path?.join(' -> ') ?? ''
-        }] ===> ${error.message}`
+        `ERROR[${dayjs().format('HH:mm:ss DD/MM/YYYY')}][${error.path?.join(' -> ') ?? ''}] ===> ${error.message}`
       );
 
       return error;

@@ -24,10 +24,7 @@ class RelayError extends Error {
   }
 }
 
-function fetchWithRetries(
-  uri: string,
-  initWithRetries: InitWithRetries = {}
-): Promise<Response> {
+function fetchWithRetries(uri: string, initWithRetries: InitWithRetries = {}): Promise<Response> {
   const { fetchTimeout, retryDelays, ...init } = initWithRetries;
 
   // eslint-disable-next-line no-underscore-dangle

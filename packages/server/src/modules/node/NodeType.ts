@@ -4,10 +4,7 @@ import { fromGlobalId, globalIdField, nodeDefinitions } from 'graphql-relay';
 import exampleConnector from '~/database/exampleConnector';
 import type IContext from '~/interfaces/IContext';
 
-type getterType = (
-  { id }: { id: string },
-  context: IContext
-) => Promise<object>;
+type getterType = ({ id }: { id: string }, context: IContext) => Promise<object>;
 
 const getters: {
   [key: string]: getterType | null;
@@ -23,10 +20,7 @@ const getNode = async (table: string, id: string, context: IContext) => {
     }
   }
 
-  const data = await exampleConnector
-    .knexConnection(table)
-    .where('id', id)
-    .first();
+  const data = await exampleConnector.knexConnection(table).where('id', id).first();
 
   if (!data) {
     return { _type: table };
@@ -35,21 +29,17 @@ const getNode = async (table: string, id: string, context: IContext) => {
   return { ...data, _type: table };
 };
 
-export const { nodeInterface, nodeField, nodesField } =
-  nodeDefinitions<IContext>(
-    (globalId, context) => {
-      const { type, id } = fromGlobalId(globalId);
+export const { nodeInterface, nodeField, nodesField } = nodeDefinitions<IContext>(
+  (globalId, context) => {
+    const { type, id } = fromGlobalId(globalId);
 
-      return getNode(type, id, context);
-    },
+    return getNode(type, id, context);
+  },
 
-    (data) => registeredTypes[data._type]
-  );
+  (data) => registeredTypes[data._type]
+);
 
-export const registerGraphQLNodeObjectType = <ObjectType>(
-  table: string,
-  getter: getterType | null = null
-) => {
+export const registerGraphQLNodeObjectType = <ObjectType>(table: string, getter: getterType | null = null) => {
   return (config: GraphQLObjectTypeConfig<ObjectType, IContext>) => {
     const ObjectType = new GraphQLObjectType({
       ...config,
@@ -57,9 +47,7 @@ export const registerGraphQLNodeObjectType = <ObjectType>(
       fields: () => ({
         id: globalIdField(table),
 
-        ...(typeof config.fields === 'function'
-          ? config.fields()
-          : config.fields),
+        ...(typeof config.fields === 'function' ? config.fields() : config.fields),
       }),
 
       interfaces: () =>

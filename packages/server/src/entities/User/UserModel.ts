@@ -13,10 +13,7 @@ const UserModel = (dbConnector: DBConnector) => {
     },
 
     getUserByEmail(email: string) {
-      return dbConnector
-        .knexConnection<IUser>('user')
-        .whereILike('email', `%${email}%`)
-        .first();
+      return dbConnector.knexConnection<IUser>('user').whereILike('email', `%${email}%`).first();
     },
 
     getUserById(id: string) {

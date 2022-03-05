@@ -10,9 +10,7 @@ const AuthModel = (dbConnector: DBConnector) => {
     async login(user_id: string) {
       const configEntity = ConfigModel(dbConnector);
 
-      const maxNumberOfValidLoginsConfig = await configEntity.getConfigByName(
-        'maximum_number_of_valid_logins'
-      );
+      const maxNumberOfValidLoginsConfig = await configEntity.getConfigByName('maximum_number_of_valid_logins');
 
       return dbConnector.knexConnection.transaction(async (trx) => {
         const login = await this.createLogin({ user_id }, trx);
@@ -46,15 +44,8 @@ const AuthModel = (dbConnector: DBConnector) => {
       return updatedLogin;
     },
 
-    async createLogin(
-      { user_id, active }: { user_id: string; active?: boolean },
-      trx?: Knex.Transaction
-    ) {
-      const [newLogin] = await callTrxOrKnexConnection<ILogin>(
-        'login',
-        dbConnector,
-        trx
-      )
+    async createLogin({ user_id, active }: { user_id: string; active?: boolean }, trx?: Knex.Transaction) {
+      const [newLogin] = await callTrxOrKnexConnection<ILogin>('login', dbConnector, trx)
         .insert({ user_id, active })
         .returning('*');
 
@@ -62,10 +53,7 @@ const AuthModel = (dbConnector: DBConnector) => {
     },
 
     getLoginById(id: string) {
-      return dbConnector
-        .knexConnection<ILogin>('login')
-        .where('id', id)
-        .first();
+      return dbConnector.knexConnection<ILogin>('login').where('id', id).first();
     },
   };
 };

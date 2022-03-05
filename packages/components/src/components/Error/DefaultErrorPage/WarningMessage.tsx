@@ -93,11 +93,7 @@ export default function WarningMessage({
           </Hyperlink>
         )}
 
-        <StyledButton
-          variant="outlined"
-          color="primary"
-          onClick={onActionClick}
-        >
+        <StyledButton variant="outlined" color="primary" onClick={onActionClick}>
           {actionText}
         </StyledButton>
       </ActionsWrapper>

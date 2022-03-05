@@ -15,9 +15,7 @@ const knexConnection = createKnexConnection(connectionConfig);
 
 const checkConnection = async () => {
   try {
-    const [data] = await knexConnection.raw<[{ check: number }]>(
-      'SELECT 1+1 AS check'
-    );
+    const [data] = await knexConnection.raw<[{ check: number }]>('SELECT 1+1 AS check');
 
     assert.strictEqual(data.check, 2);
 

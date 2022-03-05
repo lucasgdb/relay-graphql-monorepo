@@ -5,10 +5,7 @@ type PropsType = { onActionClick: () => void };
 
 type StatesType = { error: Error | null };
 
-export default class ErrorBoundary extends React.Component<
-  PropsType,
-  StatesType
-> {
+export default class ErrorBoundary extends React.Component<PropsType, StatesType> {
   constructor(props: PropsType) {
     super(props);
     this.state = { error: null };

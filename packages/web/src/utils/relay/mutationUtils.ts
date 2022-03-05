@@ -1,9 +1,4 @@
-import {
-  ConnectionHandler,
-  DataID,
-  RecordProxy,
-  RecordSourceSelectorProxy,
-} from 'relay-runtime';
+import { ConnectionHandler, DataID, RecordProxy, RecordSourceSelectorProxy } from 'relay-runtime';
 
 type ConnectionUpdater = {
   store: RecordSourceSelectorProxy;
@@ -15,10 +10,7 @@ type ConnectionUpdater = {
   connectionArgs?: Record<any, unknown>;
 };
 
-type ConnectionUpdaterValue = Omit<
-  ConnectionUpdater,
-  'cursor' | 'before' | 'edge'
-> & {
+type ConnectionUpdaterValue = Omit<ConnectionUpdater, 'cursor' | 'before' | 'edge'> & {
   fieldName: string;
   increment: number;
 };
@@ -40,17 +32,10 @@ export function connectionUpdater({
 
     const parentProxy = store.get(parentId);
 
-    const conn = ConnectionHandler.getConnection(
-      parentProxy as RecordProxy,
-      connectionName,
-      connectionArgs
-    );
+    const conn = ConnectionHandler.getConnection(parentProxy as RecordProxy, connectionName, connectionArgs);
 
     if (!conn) {
-      console.warn(
-        'maybe this connection is not in relay store: ',
-        connectionName
-      );
+      console.warn('maybe this connection is not in relay store: ', connectionName);
 
       return;
     }
@@ -78,17 +63,10 @@ export function connectionUpdaterValue({
 
   const parentProxy = store.get(parentId);
 
-  const conn = ConnectionHandler.getConnection(
-    parentProxy as RecordProxy,
-    connectionName,
-    connectionArgs
-  );
+  const conn = ConnectionHandler.getConnection(parentProxy as RecordProxy, connectionName, connectionArgs);
 
   if (!conn) {
-    console.warn(
-      'maybe this connection is not in relay store: ',
-      connectionName
-    );
+    console.warn('maybe this connection is not in relay store: ', connectionName);
     return;
   }
 
@@ -112,11 +90,7 @@ export function connectionDeleteEdgeUpdater({
   connectionArgs = {},
 }: ConnectionDeleteEdgeUpdaterOptions) {
   const parentProxy = store.get(parentId);
-  const conn = ConnectionHandler.getConnection(
-    parentProxy as RecordProxy,
-    connectionName,
-    connectionArgs
-  );
+  const conn = ConnectionHandler.getConnection(parentProxy as RecordProxy, connectionName, connectionArgs);
 
   if (!conn) {
     console.warn(`Connection ${connectionName} not found on ${parentId}`);
