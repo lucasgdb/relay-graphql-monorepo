@@ -6,7 +6,7 @@
 
 ### GIFs
 
-`Task details`: https://app.clickup.com/t/###
+`Task`: https://app.clickup.com/t/###
 
 ---
 
