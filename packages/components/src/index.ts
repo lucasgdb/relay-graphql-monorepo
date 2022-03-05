@@ -1,2 +1,2 @@
-export * from './components/Error';
-export * from './components/Notification';
+export * from './Error';
+export * from './Notification';
