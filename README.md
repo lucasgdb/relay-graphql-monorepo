@@ -1,12 +1,12 @@
-# :rocket: Monorepo - Relay and GraphQL
+# Monorepo - Relay and GraphQL
 
-## :exclamation: Requirements
+## Recommendations
 
 - Docker
-- Node >= 12.22
+- Node >= 16.x
 - Yarn
 
-## :computer: Getting started
+## Getting started
 
 ### Development mode with Docker
 
