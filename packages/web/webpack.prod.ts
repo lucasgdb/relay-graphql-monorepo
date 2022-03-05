@@ -29,7 +29,8 @@ const config = merge(webpackConfig, {
     ],
   },
   plugins: [
-    // @ts-expect-error webpack types mismatching
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     new DotEnv({
       path: '.env.production',
       safe: true,
