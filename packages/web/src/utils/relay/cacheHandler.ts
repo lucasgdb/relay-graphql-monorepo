@@ -1,5 +1,6 @@
 import { QueryResponseCache } from 'relay-runtime';
 import type { FetchFunction } from 'relay-runtime';
+
 import fetchQuery from './fetchQuery';
 import { forceFetch, isMutation, isQuery } from './helpers';
 

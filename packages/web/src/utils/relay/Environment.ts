@@ -1,4 +1,5 @@
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
+
 import { cacheHandler } from './cacheHandler';
 
 const network = Network.create(cacheHandler);
