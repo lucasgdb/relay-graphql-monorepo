@@ -50,5 +50,18 @@ services:
       server:
         condition: service_healthy
 
+  next:
+    image: node:lts-alpine3.14
+    container_name: next
+    working_dir: /src/packages/next
+    volumes:
+      - .:/src
+    entrypoint: yarn start:dev
+    ports:
+      - 8081:8081
+    depends_on:
+      server:
+        condition: service_healthy
+
 volumes:
   example_database_data:

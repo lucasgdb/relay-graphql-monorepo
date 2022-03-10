@@ -1,0 +1,29 @@
+{
+  "name": "@example/next",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "relay": "relay-compiler",
+    "start:dev": "next dev -p 8081",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mui/icons-material": "^5.5.0",
+    "@mui/material": "^5.5.0",
+    "@mui/styled-engine-sc": "^5.4.2",
+    "next": "12.1.0",
+    "react": "^18.0.0-rc.1",
+    "react-dom": "18.0.0-rc.1",
+    "react-relay": "^13.1.1",
+    "relay-config": "^12.0.1",
+    "relay-hooks": "^7.0.0",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.21",
+    "@types/react": "17.0.39",
+    "relay-compiler": "^13.1.1"
+  }
+}
