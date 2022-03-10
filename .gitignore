@@ -1,8 +1,5 @@
 node_modules
-dist
 build
-__generated__
 
 *.log
-.env
 .eslintcache
