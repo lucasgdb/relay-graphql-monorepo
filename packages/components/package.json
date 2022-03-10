@@ -12,8 +12,8 @@
     "@mui/material": "^5.4.1",
     "@mui/styled-engine-sc": "^5.4.1",
     "notistack": "^2.0.3",
-    "react": "^18.0.0-rc.1",
-    "react-dom": "^18.0.0-rc.1",
+    "react": "^18.0.0-rc.2",
+    "react-dom": "^18.0.0-rc.2",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
