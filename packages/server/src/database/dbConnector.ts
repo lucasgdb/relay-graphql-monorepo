@@ -2,7 +2,7 @@ import { knex } from 'knex';
 import type { Knex } from 'knex';
 
 export type DBConnector = {
-  knexConnection: Knex;
+  knexConnection: Knex<any, unknown[]>;
   checkConnection: () => Promise<boolean>;
   disconnect: (callback: () => void) => void;
 };

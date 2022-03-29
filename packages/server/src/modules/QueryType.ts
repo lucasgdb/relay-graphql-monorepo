@@ -6,7 +6,7 @@ import { nodeField, nodesField } from './node/NodeType';
 import { systemField } from './system/SystemType';
 import { viewerField } from './user/UserType';
 
-const QueryType = new GraphQLObjectType<never, IContext>({
+const QueryType = new GraphQLObjectType<any, IContext>({
   name: 'Query',
   fields: {
     auth: authField,
