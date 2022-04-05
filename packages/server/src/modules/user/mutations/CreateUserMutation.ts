@@ -6,8 +6,7 @@ import * as jwt from 'jwt-simple';
 
 import UserType from '../UserType';
 import exampleConnector from '~/database/exampleConnector';
-import UserModel from '~/entities/User/UserModel';
-import AuthModel from '~/entities/Auth/AuthModel';
+import { UserModel, AuthModel } from '~/entities';
 
 const getUserJWToken = async (userId: string, userEmail: string) => {
   const authEntity = AuthModel(exampleConnector);

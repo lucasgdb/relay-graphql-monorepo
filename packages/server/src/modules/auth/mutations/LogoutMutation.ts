@@ -2,7 +2,7 @@ import { errorConfig } from '@example/shared';
 import { mutationWithClientMutationId } from 'graphql-relay';
 
 import exampleConnector from '~/database/exampleConnector';
-import AuthModel from '~/entities/Auth/AuthModel';
+import { AuthModel } from '~/entities';
 import type { IContext } from '~/interfaces';
 
 type logoutProps = {

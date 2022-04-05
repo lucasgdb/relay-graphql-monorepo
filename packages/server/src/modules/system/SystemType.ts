@@ -2,7 +2,7 @@ import { GraphQLObjectType } from 'graphql';
 import { connectionArgs, connectionFromPromisedArray } from 'graphql-relay';
 
 import exampleConnector from '~/database/exampleConnector';
-import ArticleModel from '~/entities/Article/ArticleModel';
+import { ArticleModel } from '~/entities';
 import type { IContext } from '~/interfaces';
 import { ArticleConnection } from '../article/ArticleType';
 
