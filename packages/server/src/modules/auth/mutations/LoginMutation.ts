@@ -8,7 +8,7 @@ import UserType from '../../user/UserType';
 import exampleConnector from '~/database/exampleConnector';
 import UserModel from '~/entities/User/UserModel';
 import AuthModel from '~/entities/Auth/AuthModel';
-import type IUser from '~/models/IUser';
+import type { IUser } from '~/interfaces';
 
 const getUserJWToken = async (user: IUser, password: string) => {
   if (!bcrypt.compareSync(password, user.password!)) {

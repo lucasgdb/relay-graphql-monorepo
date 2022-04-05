@@ -3,7 +3,7 @@ import { connectionArgs, connectionFromPromisedArray } from 'graphql-relay';
 
 import exampleConnector from '~/database/exampleConnector';
 import ArticleModel from '~/entities/Article/ArticleModel';
-import type IContext from '~/interfaces/IContext';
+import type { IContext } from '~/interfaces';
 import { ArticleConnection } from '../article/ArticleType';
 
 const SystemType = new GraphQLObjectType<unknown, IContext>({

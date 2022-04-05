@@ -1,5 +1,5 @@
-import type IUser from '~/models/IUser';
 import type { DBConnector } from '~/database/dbConnector';
+import type { IUser } from '~/interfaces';
 
 const UserModel = (dbConnector: DBConnector) => {
   return {

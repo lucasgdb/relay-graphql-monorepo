@@ -3,7 +3,7 @@ import type { Knex } from 'knex';
 import ConfigModel from '../Config/ConfigModel';
 import callTrxOrKnexConnection from '~/utils/callTrxOrKnexConnection';
 import type { DBConnector } from '~/database/dbConnector';
-import type ILogin from '~/models/ILogin';
+import type { ILogin } from '~/interfaces';
 
 const AuthModel = (dbConnector: DBConnector) => {
   return {

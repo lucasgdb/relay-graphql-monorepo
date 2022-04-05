@@ -1,9 +1,8 @@
 import { GraphQLNonNull, GraphQLString } from 'graphql';
 import { connectionDefinitions } from 'graphql-relay';
 
-import type IContext from '~/interfaces/IContext';
-import type IUser from '~/models/IUser';
-import { getUserOrThrowError } from '~/utils/auth';
+import type { IContext, IUser } from '~/interfaces';
+import getUserOrThrowError from '~/utils/getUserOrThrowError';
 import { registerGraphQLNodeObjectType } from '../node/NodeType';
 
 const UserType = registerGraphQLNodeObjectType<IUser>('user')({

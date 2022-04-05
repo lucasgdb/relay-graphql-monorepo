@@ -1,5 +1,5 @@
 import type { DBConnector } from '~/database/dbConnector';
-import type IConfig from '~/models/IConfig';
+import type { IConfig } from '~/interfaces';
 
 const ConfigModel = (dbConnector: DBConnector) => {
   return {

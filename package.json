@@ -13,7 +13,7 @@
     "start": "docker-compose up -d",
     "stop": "docker-compose down",
     "start:server": "yarn workspace @example/server start:dev",
-    "start:web": "yarn workspace @example/web start:dev",
+    "start:web": "yarn workspace @example/web start",
     "test": "jest --verbose --detectOpenHandles --forceExit",
     "format": "prettier --ignore-path .eslintignore --write --check .",
     "lint": "eslint --cache .",

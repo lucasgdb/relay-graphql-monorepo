@@ -1,5 +1,5 @@
 import type { DBConnector } from '~/database/dbConnector';
-import type IArticle from '~/models/IArticle';
+import type { IArticle } from '~/interfaces';
 
 const ArticleModel = (dbConnector: DBConnector) => {
   return {

@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { GraphQLNonNull, GraphQLString } from 'graphql';
 import { connectionDefinitions } from 'graphql-relay';
 
-import type IArticle from '~/models/IArticle';
+import type { IArticle } from '~/interfaces';
 import { registerGraphQLNodeObjectType } from '../node/NodeType';
 
 const ArticleType = registerGraphQLNodeObjectType<IArticle>('article')({

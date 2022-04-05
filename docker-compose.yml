@@ -43,7 +43,7 @@ services:
     working_dir: /src/packages/web
     volumes:
       - .:/src
-    entrypoint: yarn start:dev
+    entrypoint: yarn start
     ports:
       - 8080:8080
     depends_on:
