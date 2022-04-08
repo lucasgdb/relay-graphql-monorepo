@@ -18,6 +18,7 @@
     "start:dev": "yarn migrate && env-cmd tsnd -r tsconfig-paths/register --inspect=0.0.0.0 --transpile-only --ignore-watch node_modules src/index.ts"
   },
   "dependencies": {
+    "@babel/runtime": "^7.17.9",
     "@example/shared": "*",
     "@koa/cors": "^3.3.0",
     "@koa/router": "^10.1.1",
