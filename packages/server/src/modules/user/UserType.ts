@@ -35,7 +35,7 @@ export const UserConnection = connectionDefinitions({
 
 export const viewerField = {
   type: new GraphQLNonNull(UserType),
-  resolve(_root: IUser, _args: unknown, context: IContext) {
+  resolve(_root: IUser | undefined, _args: unknown, context: IContext) {
     return getUserOrThrowError(context);
   },
 };

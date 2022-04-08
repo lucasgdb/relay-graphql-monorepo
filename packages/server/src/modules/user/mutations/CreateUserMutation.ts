@@ -44,7 +44,7 @@ const createUser = async ({ name, lastname, email, password, clientMutationId }:
 
   const encryptedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync());
 
-  const newUser = await userEntity.createUser({
+  const newUser = await userEntity.insert({
     name,
     lastname,
     email,

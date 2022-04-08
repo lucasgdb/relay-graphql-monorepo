@@ -1,23 +1,25 @@
+import type { RequireAtLeastOne, RequiredExceptFor } from '@example/shared';
+
 import type { DBConnector } from '~/database/dbConnector';
 import type { IUser } from '~/interfaces';
 
 const UserModel = (dbConnector: DBConnector) => {
   return {
-    async createUser(user: IUser) {
+    async insert({ email, ...user }: RequiredExceptFor<IUser, 'id' | 'created_at' | 'updated_at'>) {
       const [newUser] = await dbConnector
         .knexConnection<IUser>('user')
-        .insert({ ...user, email: user.email?.toLowerCase() })
+        .insert({ ...user, email: email.toLowerCase() })
         .returning('*');
 
       return newUser;
     },
 
-    getUserByEmail(email: string) {
-      return dbConnector.knexConnection<IUser>('user').whereILike('email', `%${email}%`).first();
+    getUserBy(user: RequireAtLeastOne<Omit<IUser, 'email'>>) {
+      return dbConnector.knexConnection<IUser>('user').where(user).first();
     },
 
-    getUserById(id: string) {
-      return dbConnector.knexConnection<IUser>('user').where('id', id).first();
+    getUserByEmail(email: string) {
+      return dbConnector.knexConnection<IUser>('user').whereILike('email', `%${email}%`).first();
     },
   };
 };

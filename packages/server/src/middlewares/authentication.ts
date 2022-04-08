@@ -44,13 +44,13 @@ const authentication = () => {
 
       const authEntity = AuthModel(exampleConnector);
 
-      const login = await authEntity.getLoginById(payload.id);
+      const login = await authEntity.getLoginBy({ id: payload.id });
       if (!login?.active) {
         return next();
       }
 
       const userEntity = UserModel(exampleConnector);
-      const user = await userEntity.getUserById(login.user_id!);
+      const user = await userEntity.getUserBy({ id: login.user_id });
 
       ctx.request.loginId = login.id;
       ctx.request.user = user;

@@ -9,10 +9,10 @@ export const up = async (knex: Knex) => {
   await knex.schema.createTable('login', (t) => {
     t.increments('id').unsigned().primary();
 
-    t.integer('user_id').unsigned();
+    t.integer('user_id').unsigned().notNullable();
     t.foreign('user_id').references('user.id');
 
-    t.boolean('active').defaultTo(true);
+    t.boolean('active').notNullable().defaultTo(true);
 
     t.timestamps(true, true);
   });

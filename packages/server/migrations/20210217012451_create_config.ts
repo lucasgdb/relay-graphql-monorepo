@@ -10,8 +10,8 @@ export const up = async (knex: Knex) => {
     t.increments('id').unsigned().primary();
 
     t.string('name').notNullable();
-    t.string('value');
-    t.boolean('public').defaultTo(true);
+    t.string('value').nullable();
+    t.boolean('public').notNullable().defaultTo(true);
 
     t.timestamps(true, true);
   });

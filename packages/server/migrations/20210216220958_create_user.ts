@@ -14,7 +14,7 @@ export const up = async (knex: Knex) => {
     table.string('password').notNullable();
 
     table.string('name').notNullable();
-    table.string('lastname');
+    table.string('lastname').nullable();
 
     table.timestamps(true, true);
   });

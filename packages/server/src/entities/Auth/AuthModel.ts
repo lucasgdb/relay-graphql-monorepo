@@ -1,3 +1,4 @@
+import type { RequireAtLeastOne } from '@example/shared';
 import type { Knex } from 'knex';
 
 import ConfigModel from '../Config/ConfigModel';
@@ -10,7 +11,7 @@ const AuthModel = (dbConnector: DBConnector) => {
     async login(user_id: string) {
       const configEntity = ConfigModel(dbConnector);
 
-      const maxNumberOfValidLoginsConfig = await configEntity.getConfigByName('maximum_number_of_valid_logins');
+      const maxNumberOfValidLoginsConfig = await configEntity.getConfigBy({ name: 'maximum_number_of_valid_logins' });
 
       return dbConnector.knexConnection.transaction(async (trx) => {
         const login = await this.createLogin({ user_id }, trx);
@@ -52,8 +53,8 @@ const AuthModel = (dbConnector: DBConnector) => {
       return newLogin;
     },
 
-    getLoginById(id: string) {
-      return dbConnector.knexConnection<ILogin>('login').where('id', id).first();
+    getLoginBy(login: RequireAtLeastOne<ILogin>) {
+      return dbConnector.knexConnection<ILogin>('login').where(login).first();
     },
   };
 };
