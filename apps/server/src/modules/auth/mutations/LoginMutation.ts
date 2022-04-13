@@ -2,7 +2,7 @@ import { errorConfig } from '@example/shared';
 import * as bcrypt from 'bcryptjs';
 import { GraphQLNonNull, GraphQLString } from 'graphql';
 import { mutationWithClientMutationId } from 'graphql-relay';
-import * as jwt from 'jwt-simple';
+import * as jwt from 'jsonwebtoken';
 
 import UserType from '../../user/UserType';
 import exampleConnector from '~/database/exampleConnector';
@@ -24,7 +24,7 @@ const getUserJWToken = async (user: IUser, password: string) => {
     active: true,
   };
 
-  const jwtToken = jwt.encode(payload, process.env.JWT_SECRET!);
+  const jwtToken = jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: '2h' });
   return jwtToken;
 };
 

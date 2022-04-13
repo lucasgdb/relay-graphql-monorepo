@@ -15,7 +15,7 @@
     "rollback": "env-cmd knex migrate:down",
     "rollback:all": "env-cmd knex migrate:rollback --all",
     "start": "knex migrate:latest && node build/index.js",
-    "start:dev": "yarn migrate && env-cmd tsnd -r tsconfig-paths/register --inspect=0.0.0.0 --transpile-only --ignore-watch node_modules src/index.ts"
+    "start:dev": "yarn migrate && env-cmd tsnd -r tsconfig-paths/register --inspect=0.0.0.0 --transpile-only src/index.ts"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
@@ -28,7 +28,7 @@
     "glob": "^7.2.0",
     "graphql": "^16.3.0",
     "graphql-relay": "^0.10.0",
-    "jwt-simple": "^0.5.6",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^1.0.5",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
