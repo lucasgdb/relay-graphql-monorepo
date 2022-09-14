@@ -19,7 +19,7 @@ services:
       start_period: 5s
 
   server:
-    image: node:lts-alpine3.14
+    image: node:16-alpine
     container_name: server
     working_dir: /src/apps/server
     volumes:
@@ -38,7 +38,7 @@ services:
         condition: service_healthy
 
   web:
-    image: node:lts-alpine3.14
+    image: node:16-alpine
     container_name: web
     working_dir: /src/apps/web
     volumes:
