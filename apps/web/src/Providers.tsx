@@ -4,8 +4,8 @@ import { Notification } from '@example/components';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { RelayEnvironmentProvider } from 'relay-hooks';
 import ptBRLocale from 'date-fns/locale/pt-BR';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 
 import { environment } from './utils/relay';
